@@ -27,7 +27,12 @@
           backgroundImage: `url(${requestDiffSizeImage(theMovie.Poster)})`,
         }"
         class="poster"
-      ></div>
+      >
+        <Loader
+          v-if="imageLoading"
+          absolute
+        />
+      </div>
       <div class="specs">
         <div class="title">{{ theMovie.Title }}</div>
         <div class="labels">
@@ -77,6 +82,9 @@ export default {
   components: {
     Loader,
   },
+  data() {
+    return { imageLoading: true }
+  },
   computed: {
     theMovie() {
       return this.$store.state.movie.theMovie
@@ -92,7 +100,15 @@ export default {
   },
   methods: {
     requestDiffSizeImage(url, size = 700) {
-      return url.replace('SX300', `SX${700}`)
+      if (!url || url === 'N/A') {
+        this.imageLoading = false
+        return ''
+      }
+      const src = url.replace('SX300', `SX${700}`)
+      this.$loadImage(src).then(() => {
+        this.imageLoading = false
+      })
+      return src
     },
   },
 }
@@ -142,6 +158,7 @@ export default {
   display: flex;
   color: $gray-600;
   .poster {
+    position: relative;
     width: 500px;
     height: calc(500px * 3 / 2);
     margin-right: 70px;

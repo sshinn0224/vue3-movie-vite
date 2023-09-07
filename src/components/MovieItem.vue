@@ -1,5 +1,6 @@
 <template>
-  <div
+  <RouterLink
+    :to="`/movie/${movie.imdbID}`"
     :style="{ backgroundImage: `url(${movie.Poster})` }"
     class="movie"
   >
@@ -16,7 +17,7 @@
         {{ movie.Title }}
       </div>
     </div>
-  </div>
+  </RouterLink>
 </template>
 <script>
 import Loader from '@/components/Loader.vue'
@@ -40,9 +41,13 @@ export default {
   },
   methods: {
     async init() {
-      await this.$loadImage(this.movie.Poster)
-      console.log('done..')
-      this.imageLoading = false
+      const poster = this.movie.Poster
+      if (!poster || poster === 'N/A') {
+        this.imageLoading = false
+      } else {
+        await this.$loadImage(poster)
+        this.imageLoading = false
+      }
     },
   },
 }

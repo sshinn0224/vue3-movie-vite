@@ -10,6 +10,7 @@
         <RouterLink
           active-class="active"
           class="nav-link"
+          :class="{ active: isMatch(nav.path) }"
           :to="nav.href"
         >
           {{ nav.name }}
@@ -21,11 +22,13 @@
 <script>
 import { ref } from 'vue'
 import Logo from '@/components/Logo.vue'
+import { useRoute } from 'vue-router'
 export default {
   components: {
     Logo,
   },
   setup() {
+    const router = useRoute()
     const navigations = ref([
       {
         name: 'Search',
@@ -34,6 +37,7 @@ export default {
       {
         name: 'Movie',
         href: '/movie/tt4520988',
+        path: /^\/movie/,
       },
       {
         name: 'About',
@@ -41,8 +45,14 @@ export default {
       },
     ])
 
+    const isMatch = (path) => {
+      if (!path) return false
+      return path.test(router.fullPath)
+    }
+
     return {
       navigations,
+      isMatch,
     }
   },
 }
