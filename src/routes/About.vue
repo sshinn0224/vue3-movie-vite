@@ -26,26 +26,13 @@
 </template>
 <script>
 import Loader from '@/components/Loader.vue'
+import { mapState } from 'vuex'
 export default {
   components: {
     Loader,
   },
   computed: {
-    image() {
-      return this.$store.state.about.image
-    },
-    name() {
-      return this.$store.state.about.name
-    },
-    email() {
-      return this.$store.state.about.email
-    },
-    blog() {
-      return this.$store.state.about.blog
-    },
-    phone() {
-      return this.$store.state.about.phone
-    },
+    ...mapState('about', ['image', 'name', 'email', 'blog', 'phone']),
   },
   data() {
     return {
@@ -65,6 +52,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import './src/scss/main.scss';
 .about {
   text-align: center;
 

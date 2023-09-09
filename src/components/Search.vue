@@ -81,6 +81,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@import './src/scss/main.scss';
 .container {
   display: flex;
   > * {

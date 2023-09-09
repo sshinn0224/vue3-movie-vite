@@ -78,6 +78,7 @@
 </template>
 <script>
 import Loader from '@/components/Loader.vue'
+import { mapState } from 'vuex'
 export default {
   components: {
     Loader,
@@ -86,12 +87,7 @@ export default {
     return { imageLoading: true }
   },
   computed: {
-    theMovie() {
-      return this.$store.state.movie.theMovie
-    },
-    loading() {
-      return this.$store.state.movie.loading
-    },
+    ...mapState('movie', ['theMovie', 'loading']),
   },
   created() {
     this.$store.dispatch('movie/searchMovieWithId', {
@@ -114,6 +110,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@import './src/scss/main.scss';
 .container {
   padding-top: 40px;
 }

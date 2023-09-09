@@ -5,6 +5,7 @@
   </div>
 </template>
 <style lang="scss" scoped>
+@import './src/scss/main.scss';
 .not-found {
   line-height: 1.2;
   text-align: center;

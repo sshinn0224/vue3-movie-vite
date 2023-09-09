@@ -27,6 +27,7 @@
 
 <script>
 import MovieItem from './MovieItem.vue'
+import { mapState } from 'vuex'
 import Loader from './Loader.vue'
 export default {
   components: {
@@ -34,19 +35,12 @@ export default {
     Loader,
   },
   computed: {
-    movies() {
-      return this.$store.state.movie.movies
-    },
-    message() {
-      return this.$store.state.movie.message
-    },
-    loading() {
-      return this.$store.state.movie.loading
-    },
+    ...mapState('movie', ['movies', 'message', 'loading']),
   },
 }
 </script>
 <style lang="scss" scoped>
+@import './src/scss/main.scss';
 .container {
   margin-top: 30px;
   .inner {

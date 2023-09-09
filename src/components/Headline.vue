@@ -15,6 +15,7 @@
   </div>
 </template>
 <style lang="scss" scoped>
+@import './src/scss/main.scss';
 .container {
   padding-top: 40px;
 }

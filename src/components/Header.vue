@@ -31,7 +31,7 @@
 <script>
 import { ref, computed } from 'vue'
 import Logo from '@/components/Logo.vue'
-import { useRoute, useRouter } from 'vue-router'
+import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 export default {
   components: {
@@ -88,6 +88,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@import './src/scss/main';
 header {
   position: relative;
   height: 70px;

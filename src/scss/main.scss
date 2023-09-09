@@ -1,4 +1,4 @@
-@import '../../node_modules/bootstrap/scss/functions.scss';
+@import '../../node_modules/bootstrap/scss/functions';
 // default variable overrides
 $primary: #fdc000;
 $container-max-widths: (
@@ -10,7 +10,11 @@ $container-max-widths: (
 );
 
 // required
-@import '../../node_modules/bootstrap/scss/variables.scss';
-@import '../../node_modules/bootstrap/scss/mixins.scss';
+// Required
+@import '../../node_modules/bootstrap/scss/variables';
+@import '../../node_modules/bootstrap/scss/variables-dark';
+@import '../../node_modules/bootstrap/scss/maps';
+@import '../../node_modules/bootstrap/scss/mixins';
+@import '../../node_modules/bootstrap/scss/root';
 
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
