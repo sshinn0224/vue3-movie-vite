@@ -1,0 +1,13 @@
+[build]
+  command = "npm run build"
+  functions = "functions"
+  publish = "dist"
+
+# 개발모드
+[dev]
+  framework = "#custom"
+  command = "npm run dev"
+  targetPort = 5173
+  port = 8888
+  publish = "dist"
+  autoLaunch = false
